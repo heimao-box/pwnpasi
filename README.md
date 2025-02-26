@@ -15,13 +15,13 @@ pwnpasi反馈/交流群: 256806296，欢迎各位师傅反馈工具问题，也�
 确保已安装Python 3.x，安装所需依赖库：
 
 ```
-pip3 install pwntools LibcSearcher
+pip3 install pwntools LibcSearcher ropper
 ```
 
 安装所需工具：
 
 ```
-apt install checksec objdump strings ropper
+apt install checksec objdump strings
 ```
 
 ## 运行工具
