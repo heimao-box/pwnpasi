@@ -23,7 +23,7 @@ pip3 install pwntools LibcSearcher ropper
 安装所需工具：
 
 ```
-apt install checksec objdump strings
+apt install checksec objdump strings libc-bin
 ```
 
 ## 运行工具
