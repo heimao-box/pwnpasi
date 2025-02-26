@@ -11,6 +11,8 @@ https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
 
 pwnpasi反馈/交流群: 256806296，欢迎各位师傅反馈工具问题，也可以提出想要增加的功能，有想要加入这个项目一起开发的师傅，非常欢迎
 
+ps:（v1.2版是最新版，可能存在BUG，追求稳定可以使用v1.1版）
+
 ## 使用说明安装依赖
 确保已安装Python 3.x，安装所需依赖库：
 
