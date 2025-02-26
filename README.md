@@ -24,7 +24,7 @@ apt install checksec objdump strings
 通过命令行运行工具，指定目标程序和溢出字符数（可选）。示例命令：
 
 ```
-python pwnsipa.py -l babypwn -libc ./libc-2.19.so
+python pwnsipa.py -l level3_x64 -libc ./libc-2.19.so
 ```
 
 使用ldd工具可查看程序调用的动态链接库
@@ -38,13 +38,13 @@ ldd [文件名]
 指定造成溢出的字符数：
 
 ```
-python pwnsipa.py -l babypwn -libc ./libc-2.19.so -f 112
+python pwnsipa.py -l level3_x64 -libc ./libc-2.19.so -f 112
 ```
 
 远程连接：
 
 ```
-python pwnsipa.py -l babypwn -libc ./libc-2.19.so -ip 192.168.0.1 -p 33333
+python pwnsipa.py -l level3_x64 -libc ./libc-2.19.so -ip 192.168.0.1 -p 33333
 ```
 
 ## 未来计划
