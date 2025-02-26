@@ -5,7 +5,7 @@ pwnpasi 是一款专为CTF PWN方向栈溢出入门基础题目开发设计的�
 
 https://github.com/user-attachments/assets/70cef501-f1ab-4ec1-a088-95e0183c4a81
 
-
+pwnpasi反馈/交流群: 256806296，欢迎各位师傅反馈工具问题，也可以提出想要增加的功能，有想要加入这个项目一起开发的师傅，非常欢迎
 
 ## 使用说明安装依赖
 确保已安装Python 3.x，安装所需依赖库：
