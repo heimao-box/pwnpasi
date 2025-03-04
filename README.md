@@ -1,17 +1,22 @@
 # pwnpasi
-pwnpasi 是一款专为CTF PWN方向栈溢出入门基础题目开发设计的自动化工具，旨在帮助新手小白快速识别和利用32位和64位程序中的栈溢出漏洞。该工具能够自动判断溢出字符数，自动识别程序调用的动态链接库，并生成相应的ROP链以利用漏洞。支持多种利用方式，包括调用system后门函数、写入shellcode、puts函数ROP、write函数ROP以及syscall ROP。此外，工具还具备本地和远程利用功能，并集成了LibcSearcher库，用于在没有提供libc地址的情况下自动搜索合适的libc版本
+pwnpasi 是一款专为CTF PWN方向栈溢出入门基础题目开发设计的自动化工具，旨在帮助新手小白快速识别和利用32位和64位程序中的栈溢出漏洞与格式化字符串漏洞。该工具能够自动判断溢出字符数，自动识别格式化字符串漏洞，自动识别程序调用的动态链接库，并生成相应的ROP链以利用漏洞。支持多种利用方式，包括调用system后门函数、写入shellcode、puts函数ROP、write函数ROP以及syscall ROP，格式化字符串利用。此外，工具还具备本地和远程利用功能，并集成了LibcSearcher库，用于在没有提供libc地址的情况下自动搜索合适的libc版本
 
 
 
+## 栈溢出漏洞演示：
 
 https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
 
+## 格式化字符串漏洞演示
+
+
+
+https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 
 
 
 pwnpasi反馈/交流群: 256806296，欢迎各位师傅反馈工具问题，也可以提出想要增加的功能，有想要加入这个项目一起开发的师傅，非常欢迎
 
-ps:（v1.2版是最新版，可能存在BUG，追求稳定可以使用v1.1版）
 
 ## 使用说明安装依赖
 确保已安装Python 3.x，安装所需依赖库：
@@ -56,9 +61,9 @@ python pwnsipa.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.
 ## 未来计划
 完善64位程序的寄存器调用功能。
 
-增加格式化字符串漏洞利用与绕过Canary防护
+增加绕过PIE与绕过Canary功能
 
-增加更多漏洞利用方式和支持的架构。
+增加更多栈溢出与格式化字符串漏洞的利用方式和支持的架构。
 
 提升工具的自动化程度和用户友好性。
 
