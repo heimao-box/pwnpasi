@@ -1214,7 +1214,7 @@ if __name__ == '__main__':
 			print("[*]Remote execution mode")
 			if system == 1 and bin_sh == 1 :
 				print('[*]泄露程序字符串')
-				fmtstr_print_strings(program)
+				fmtstr_print_strings_remote(program,url,port)
 				offset = find_offset(program)
 				log.info(f"Offset found: \033[31m{offset}\033[0m")
 				function, buf_addr , function_name = find_ftmstr_bss_symbols(program)
