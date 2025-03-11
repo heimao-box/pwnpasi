@@ -13,6 +13,12 @@ https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
 
 https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 
+## 过PIE防护演示
+
+
+
+https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
+
 
 
 pwnpasi反馈/交流群: 256806296，欢迎各位师傅反馈工具问题，也可以提出想要增加的功能，有想要加入这个项目一起开发的师傅，非常欢迎
