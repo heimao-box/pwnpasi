@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
 
 
-## 使用说明安装依赖
+## 安装依赖
 确保已安装Python 3.x，安装所需依赖库：
 
 ```
