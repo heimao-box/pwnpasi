@@ -63,7 +63,7 @@ python pwnsipa.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.
 ## 未来计划
 完善64位程序的寄存器调用功能
 
-增加绕过PIE与绕过Canary功能
+增加绕过Canary防护功能
 
 增加多交互程序的FUZZ功能
 
