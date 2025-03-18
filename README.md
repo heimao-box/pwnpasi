@@ -19,6 +19,8 @@ https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 
 https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67
 
+canary FUZZ需要的时间较久，需要耐心等一下
+
 
 
 ## 绕过PIE防护演示
