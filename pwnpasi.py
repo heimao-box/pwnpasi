@@ -2136,10 +2136,10 @@ if __name__ == '__main__':
 		print("-f, --fill           The number of characters that can cause overflow")
 		print("")
 		print("Usage:")
-		print("python pwnsipa.py -l babypwn")
-		print("python pwnsipa.py -l babypwn -f 112")
-		print("python pwnsipa.py -l babypwn -libc ./libc-2.19.so")
-		print("python pwnsipa.py -l babypwn -libc ./libc-2.19.so -ip 192.168.0.1 -p 33333")
+		print("python pwnpasi.py -l babypwn")
+		print("python pwnpasi.py -l babypwn -f 112")
+		print("python pwnpasi.py -l babypwn -libc ./libc-2.19.so")
+		print("python pwnpasi.py -l babypwn -libc ./libc-2.19.so -ip 192.168.0.1 -p 33333")
 		sys.exit(0)
 
 	libc_path = None
