@@ -34,13 +34,7 @@ https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
 确保已安装Python 3.x，安装所需依赖库：
 
 ```
-pip3 install pwntools LibcSearcher ropper
-```
-
-安装所需工具：
-
-```
-apt install checksec objdump strings libc-bin
+python3 setup.py install
 ```
 
 ## 运行工具
