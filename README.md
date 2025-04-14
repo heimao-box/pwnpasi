@@ -41,7 +41,7 @@ python3 setup.py install
 通过命令行运行工具。示例命令：
 
 ```
-python pwnsipa.py -l level3_x64
+python pwnpasi.py -l level3_x64
 ```
 
 使用ldd工具可查看程序调用的动态链接库
@@ -55,13 +55,13 @@ ldd [文件名]
 指定造成溢出的字符数与动态链接库：
 
 ```
-python pwnsipa.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -f 112
+python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -f 112
 ```
 
 远程连接：
 
 ```
-python pwnsipa.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.0.1 -p 33333
+python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.0.1 -p 33333
 ```
 
 ## 未来计划
