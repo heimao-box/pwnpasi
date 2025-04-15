@@ -31,7 +31,7 @@ https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
 
 
 ## 安装依赖
-确保已安装Python 3.x，安装所需依赖库：
+确保已安装Python 3.x，推荐使用kali，安装所需依赖库：
 
 ```
 python3 setup.py install
