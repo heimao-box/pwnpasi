@@ -36,6 +36,11 @@ https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
 ```
 python3 setup.py install
 ```
+如果脚本安装失败，则手动安装依赖库即可
+```
+pip3 install pwntools
+pip3 install LibcSearcher
+```
 
 ## 运行工具
 通过命令行运行工具。示例命令：
