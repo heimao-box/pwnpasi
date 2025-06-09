@@ -375,7 +375,7 @@ def asm_Stack_Overflow(program,bit):
 					offset_dec = abs(int(offset_hex, 16))
 					res = offset_dec
 					padding = offset_dec + 4
-					print(f"\033[31m[*]溢出值修正: {res}\033[0m")
+					print(f"\033[31m[*]栈大小: {res}\033[0m")
 					print(f"\033[31m[*]溢出值修正: {padding}\033[0m")
 
 					return padding
