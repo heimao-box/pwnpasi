@@ -310,6 +310,53 @@ def Test_Stack_Overflow(program,bit):
 
 		return padding
 
+def asm_Stack_Overflow(program,bit):
+	if bit == 64:
+		with open("Objdump_Scan.txt", 'r') as f:
+			content = f.read()
+    
+		func_pattern = r'^[0-9a-f]+ <(\w+)>:(.*?)(?=^\d+ <\w+>:|\Z)'
+		functions = re.finditer(func_pattern, content, re.MULTILINE | re.DOTALL)
+
+		for func in functions:
+			func_name = func.group(1)
+			func_body = func.group(2)
+
+			if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body:
+			    # 查找lea指令中的偏移量
+				lea_match = re.search(r'lea\s+(-?0x[0-9a-f]+)\(%[er]bp\)', func_body)
+				if lea_match:
+					offset_hex = lea_match.group(1)
+					offset_dec = abs(int(offset_hex, 16))
+					res = offset_dec
+					padding = offset_dec + 8
+					print(f"\033[31m[*]栈大小: {res}\033[0m")
+					print(f"\033[31m[*]溢出值修正: {padding}\033[0m")
+
+					return padding
+	if bit ==32:
+		with open("Objdump_Scan.txt", 'r') as f:
+			content = f.read()
+    
+		func_pattern = r'^[0-9a-f]+ <(\w+)>:(.*?)(?=^\d+ <\w+>:|\Z)'
+		functions = re.finditer(func_pattern, content, re.MULTILINE | re.DOTALL)
+
+		for func in functions:
+			func_name = func.group(1)
+			func_body = func.group(2)
+
+			if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body:
+				lea_match = re.search(r'lea\s+(-?0x[0-9a-f]+)\(%[er]bp\)', func_body)
+				if lea_match:
+					offset_hex = lea_match.group(1)
+					offset_dec = abs(int(offset_hex, 16))
+					res = offset_dec
+					padding = offset_dec + 4
+					print(f"\033[31m[*]溢出值修正: {res}\033[0m")
+					print(f"\033[31m[*]溢出值修正: {padding}\033[0m")
+
+					return padding
+
 def check_binsh(program):
 	os.system('strings ' + program +' | grep "/bin/sh" > check_binsh.txt')
 	with open('check_binsh.txt', 'r') as file:
@@ -2266,6 +2313,8 @@ if __name__ == '__main__':
 	if not args.fill:
 		print("[*]测试程序是否存在栈溢出漏洞")
 		padding = Test_Stack_Overflow(program,bit)
+		if padding != 0:
+			padding = asm_Stack_Overflow(program,bit)
 		
 	print("完成")
 	print("[*]开始对程序尝试PWN...")
