@@ -8,8 +8,8 @@ def run_command(command, error_message):
     try:
         subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
-        print(f"错误: {error_message}")
-        print(f"详细信息: {e.stderr.decode().strip()}")
+        print(f"Error: {error_message}")
+        print(f"Details: {e.stderr.decode().strip()}")
         sys.exit(1)
 
 def install_system_dependencies():
@@ -17,26 +17,26 @@ def install_system_dependencies():
 
     ]
     
-    print("\n[+] 正在更新软件包列表...")
-    run_command(['sudo', 'apt', 'update'], "更新软件包列表失败")
+    print("\n[+] Updating package lists...")
+    run_command(['sudo', 'apt', 'update'], "Failed to update package lists")
 
     for pkg, desc in dependencies:
-        print(f"\n[+] 正在安装 {desc}({pkg})...")
-        run_command(['sudo', 'apt', 'install', '-y', pkg], f"安装 {pkg} 失败")
+        print(f"\n[+] Installing {desc}({pkg})...")
+        run_command(['sudo', 'apt', 'install', '-y', pkg], f"Failed to install {pkg}")
 
 def main():
     if os.geteuid() != 0:
-        print("\n[!] 注意: 此脚本需要安装系统软件包")
-        print("[!] 将会请求sudo权限来安装系统依赖\n")
+        print("\n[!] Note: This script requires system package installation")
+        print("[!] Will request sudo privileges to install system dependencies\n")
 
     install_system_dependencies()
 
-    print("\n[✔] 所有组件安装完成！")
+    print("\n[✔] All components installed successfully!")
 
 setup(
     name='pwnpasi-setup',
     version='1.2',
-    description='安全可靠的PWN环境配置工具',
+    description='Secure and reliable PWN environment configuration tool',
     author='Ba1_Ma0',
     author_email='baimao3389@gmail.com',
     packages=find_packages(),
