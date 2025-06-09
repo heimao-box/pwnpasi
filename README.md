@@ -49,18 +49,10 @@ pip3 install LibcSearcher
 python pwnpasi.py -l level3_x64
 ```
 
-使用ldd工具可查看程序调用的动态链接库
+指定动态链接库：
 
 ```
-ldd [文件名]
-```
-
-![](https://cdn.nlark.com/yuque/0/2025/png/27444040/1740375618886-31437dd2-55a3-4063-bc27-96492cc4c109.png)
-
-指定造成溢出的字符数与动态链接库：
-
-```
-python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -f 112
+python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6
 ```
 
 远程连接：
@@ -89,3 +81,5 @@ python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.
 此工具也为下一个项目做技术积累
 
 诚挚邀请各位开发者加入PwnPasi反馈与交流群（群号：256806296），共同探讨工具使用中的问题，并提出宝贵的功能建议。同时，欢迎有志之士加入我们的开发团队，携手推进项目的进一步发展
+## 致谢
+感谢Melody、落雨流辰师傅以及群内群友对本工具提出的各种建议，每一条建议都像一块拼图，帮助这个项目逐渐完整
