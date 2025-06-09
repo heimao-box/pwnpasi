@@ -35,8 +35,7 @@ https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
 https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 
 ## Bypassing Canary Protection Demo  
-https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67 
-*(Note: Canary fuzzing may take some time—please be patient.)*
+https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67
 
 ## Bypassing PIE Protection Demo  
 https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
