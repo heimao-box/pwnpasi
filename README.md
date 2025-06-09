@@ -1,85 +1,121 @@
 # pwnpasi
-pwnpasi 是一款专为CTF PWN方向入门基础题目开发设计的自动化工具，旨在帮助新手小白快速识别和利用32位和64位程序中的栈溢出漏洞与格式化字符串漏洞。该工具能够自动判断溢出字符数，自动识别格式化字符串漏洞，自动识别程序调用的动态链接库，并生成相应的ROP链以利用漏洞。支持多种利用方式，包括调用system后门函数、写入shellcode、puts函数ROP、write函数ROP以及syscall ROP，格式化字符串利用，可自动识别并绕过PIE防护与canary防护。此外，工具还具备本地和远程利用功能，并集成了LibcSearcher库，用于在没有提供libc地址的情况下自动搜索合适的libc版本
 
+**pwnpasi** is an automated tool specifically designed for introductory-level CTF PWN challenges, aimed at helping beginners quickly identify and exploit **stack overflow** and **format string vulnerabilities** in 32-bit and 64-bit programs.
 
+The tool can automatically:
+- Determine the overflow offset  
+- Detect format string vulnerabilities  
+- Identify dynamically linked libraries used by the program  
+- Generate corresponding **ROP chains** for exploitation  
 
-## 栈溢出漏洞演示：
+It supports multiple exploitation techniques, including:
+- Calling `system` backdoor functions  
+- Writing shellcode  
+- `puts` function ROP  
+- `write` function ROP  
+- `syscall` ROP  
+- Format string exploitation  
 
+Additionally, it can **automatically detect and bypass PIE (Position-Independent Executable) and Canary protections**. The tool supports both **local and remote exploitation** and integrates the **LibcSearcher** library to automatically search for suitable libc versions when no libc address is provided.
+
+---
+
+## Translation Notice
+
+This is an English translation of the original [README](https://github.com/heimao-box/pwnpasi) written in Chinese.
+
+Translated by [xkenchii](https://github.com/xkenchii). If you find any issues with the translation, feel free to open an issue or pull request.
+
+---
+
+## Stack Overflow Exploitation Demo  
 https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
 
-## 格式化字符串漏洞演示
-
-
-
+## Format String Exploitation Demo  
 https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
 
-## 绕过canary防护演示：
+## Bypassing Canary Protection Demo  
+https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67 
+*(Note: Canary fuzzing may take some time—please be patient.)*
 
-
-
-https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67
-
-canary FUZZ需要的时间较久，需要耐心等一下
-
-
-
-## 绕过PIE防护演示
-
-
-
+## Bypassing PIE Protection Demo  
 https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
+---
 
+## Installation Dependencies  
+Ensure **Python 3.x** is installed (Kali Linux is recommended). Install the required dependencies:
 
-## 安装依赖
-确保已安装Python 3.x，推荐使用kali，安装所需依赖库：
-
-```
+```bash
 python3 setup.py install
-```
-如果脚本安装失败，则手动安装依赖库即可
-```
-pip3 install pwntools
+````
+
+If script installation fails, manually install the dependencies:
+
+```bash
+pip3 install pwntools  
 pip3 install LibcSearcher
 ```
 
-## 运行工具
-通过命令行运行工具。示例命令：
+---
 
-```
+## Running the Tool
+
+Execute the tool via the command line. Example commands:
+
+### Basic usage:
+
+```bash
 python pwnpasi.py -l level3_x64
 ```
 
-指定动态链接库：
+### Specify a dynamic library (libc):
 
-```
+```bash
 python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6
 ```
 
-远程连接：
+### Remote exploitation:
 
-```
+```bash
 python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.0.1 -p 33333
 ```
 
-## 未来计划
-完善64位程序的寄存器调用功能
+---
 
-增加多交互程序的FUZZ功能
+## Future Plans
 
-增加更多栈溢出与格式化字符串漏洞的利用方式和支持的架构
+* Improve **64-bit register-based function calls**
+* Add **multi-interaction program fuzzing** support
+* Expand exploitation methods for **stack overflow & format string vulnerabilities**, supporting more architectures
+* Enhance **automation and user-friendliness**
 
-提升工具的自动化程度和用户友好性
+---
 
-## 关于可能的报错
-为确保FUZZ测试的顺利进行，程序名称应避免使用特殊字符（如_/*&^%$#@等），建议使用纯字母或数字命名。若存在特殊字符，请及时重命名程序
+## Possible Errors & Solutions
 
-报错可能源于工具或依赖项未完全安装。请根据上述提供的工具列表，逐一检查并确保所有必要的工具和依赖项均已正确安装
+* **Avoid special characters** (e.g., `_/*&^%$#@`) in program names—use **only letters or numbers**.
+* Errors may occur if dependencies are not fully installed. Verify all required tools and libraries are correctly installed.
 
-## 最后
-本工具专为CTF PWN领域设计，当前版本主要面向初学者，提供入门级题目的解决方案，同时也为具备PWN基础的师傅提供支持。我将持续迭代更新，逐步引入更多高级功能
+---
 
-此工具也为下一个项目做技术积累
+## Final Notes
 
-诚挚邀请各位开发者加入PwnPasi反馈与交流群（群号：256806296），共同探讨工具使用中的问题，并提出宝贵的功能建议。同时，欢迎有志之士加入我们的开发团队，携手推进项目的进一步发展
-## 致谢
-感谢Melody、mycafday、落雨流辰师傅以及群内群友对本工具提出的各种建议，每一条建议都像一块拼图，帮助这个项目逐渐完整
+This tool is designed for **CTF PWN challenges**, currently targeting **beginners** while also supporting users with PWN experience. We will **continue updating** and introducing more advanced features.
+
+This project also serves as **technical groundwork** for future developments.
+
+Join the PwnPasi Feedback & Discussion Group (Group ID: **256806296**) to share issues, suggestions, or contribute to development.
+
+---
+
+## Acknowledgments
+
+Special thanks to **Melody**, **mycafday**, **落雨流辰**, and all group members for their valuable feedback—each suggestion has helped shape this project.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+Original project by [heimao-box](https://github.com/heimao-box). Translation provided in compliance with the license.
+
