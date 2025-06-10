@@ -14,6 +14,7 @@ Identifies dynamically linked libraries (libc)
 ```
 Constructs ROP chains for:
 Calling backdoor functions (e.g., system)
+Automatically detect vulnerable functions and generate their associated assembly code
 Shellcode injection
 puts/write function ROP
 syscall-based ROP
