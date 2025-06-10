@@ -2,21 +2,34 @@
 
 **pwnpasi** is an automated tool specifically designed for introductory-level CTF PWN challenges, aimed at helping beginners quickly identify and exploit **stack overflow** and **format string vulnerabilities** in 32-bit and 64-bit programs.
 
-The tool can automatically:
-- Determine the overflow offset  
-- Detect format string vulnerabilities  
-- Identify dynamically linked libraries used by the program  
-- Generate corresponding **ROP chains** for exploitation  
+## Key Features:
 
-It supports multiple exploitation techniques, including:
-- Calling `system` backdoor functions  
-- Writing shellcode  
-- `puts` function ROP  
-- `write` function ROP  
-- `syscall` ROP  
-- Format string exploitation  
-
-Additionally, it can **automatically detect and bypass PIE (Position-Independent Executable) and Canary protections**. The tool supports both **local and remote exploitation** and integrates the **LibcSearcher** library to automatically search for suitable libc versions when no libc address is provided.
+✅ Automated Vulnerability Analysis
+```
+Determines overflow offsets
+Detects format string vulnerabilities
+Identifies dynamically linked libraries (libc)
+```
+✅ One-Click Exploit Generation
+```
+Constructs ROP chains for:
+Calling backdoor functions (e.g., system)
+Shellcode injection
+puts/write function ROP
+syscall-based ROP
+Format string exploitation
+```
+✅ Protection Bypass
+```
+Auto-detects and circumvents:
+PIE (Position-Independent Executable)
+Stack Canary
+```
+✅ Flexible Deployment
+```
+Supports local and remote exploitation
+Integrates LibcSearcher to auto-resolve libc versions (even without provided addresses)
+```
 
 ---
 
