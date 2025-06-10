@@ -132,3 +132,7 @@ Special thanks to **Melody**, **mycafday**, **落雨流辰**, and all group memb
 This project is licensed under the [MIT License](LICENSE).
 Original project by [heimao-box](https://github.com/heimao-box). Translation provided in compliance with the license.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=heimao-box/pwnpasi&type=Date)](https://www.star-history.com/#heimao-box/pwnpasi&Date)
+
