@@ -327,6 +327,7 @@ def vuln_func_name():
 		has_call_read = bool(re.search(r'call.*read@plt', func))
 		has_call_read +=bool(re.search(r'call.*gets@plt', func))
 		has_call_read +=bool(re.search(r'call.*fgets@plt', func))
+		has_call_read +=bool(re.search(r'call.*scanf@plt', func)) 
 		
 		if has_lea and has_call_read:
 			lea_match = re.search(r'lea\s+-\s*(0x[0-9a-f]+)', func)
@@ -346,7 +347,7 @@ def asm_Stack_Overflow(program, bit):
         for func in functions:
             func_body = func.group(2)
 
-            if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body:
+            if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body or 'lea' in func_body and 'call' in func_body and 'scanf' in func_body :
                 lea_match = re.search(r'lea\s+(-?0x[0-9a-f]+)\(%[er]bp\)', func_body)
                 if lea_match:
                     offset_hex = lea_match.group(1)
@@ -368,7 +369,7 @@ def asm_Stack_Overflow(program, bit):
         for func in functions:
             func_body = func.group(2)
 
-            if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body:
+            if 'lea' in func_body and 'call' in func_body and 'read' in func_body or 'lea' in func_body and 'call' in func_body and 'gets' in func_body or 'lea' in func_body and 'call' in func_body and 'fgets' in func_body or 'lea' in func_body and 'call' in func_body and 'scanf' in func_body :
                 lea_match = re.search(r'lea\s+(-?0x[0-9a-f]+)\(%[er]bp\)', func_body)
                 if lea_match:
                     offset_hex = lea_match.group(1)
