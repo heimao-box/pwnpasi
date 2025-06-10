@@ -2361,6 +2361,10 @@ if __name__ == '__main__':
 			results = vuln_func_name()
 			for func_name in results:
 				print(f"\033[31m[*]Function name with stack overflow vulnerability: {func_name}\033[0m")
+			print("-----------Vulnerability function assembly code------------")
+			for func_name in results:
+				os.system("objdump -d -M intel " + program + " --no-show-raw-insn | grep -A20 " + '"' + func_name + '"')
+			print("-----------------------------------------------------------")
 		
 	print("Done")
 	print("[*]Starting to attempt PWN on the program...")
