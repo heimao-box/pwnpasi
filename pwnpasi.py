@@ -4,7 +4,6 @@
 PwnPasi - Automated Binary Exploitation Tool
 Version: 3.0
 Author: Security Research Team
-Description: Professional automated PWN exploitation framework with sqlmap-style output
 """
 
 from pwn import *
