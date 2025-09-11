@@ -54,6 +54,8 @@ Ensure **Python 3.x** is installed (Kali Linux is recommended). Install the requ
 ```bash
 python3 setup.py
 ````
+<img width="1276" height="994" alt="image" src="https://github.com/user-attachments/assets/5ed16a60-eaf9-4c2b-ba0b-c48beff0a8b3" />
+
 
 If script installation fails, manually install the dependencies:
 
