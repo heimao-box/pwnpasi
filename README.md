@@ -1,6 +1,10 @@
-# pwnpasi
+# pwnpasi v3.0
 
 **pwnpasi** is an automated tool specifically designed for introductory-level CTF PWN challenges, aimed at helping beginners quickly identify and exploit **stack overflow** and **format string vulnerabilities** in 32-bit and 64-bit programs.
+
+
+https://github.com/user-attachments/assets/e174553b-1547-4a96-9a97-95e53b281708
+
 
 ## Key Features:
 
@@ -42,24 +46,13 @@ Translated by [xkenchii](https://github.com/xkenchii). If you find any issues wi
 
 ---
 
-## Stack Overflow Exploitation Demo  
-https://github.com/user-attachments/assets/5b5abcdb-1011-4ed4-be6e-5b819eb3a3ab
-
-## Format String Exploitation Demo  
-https://github.com/user-attachments/assets/9bf09335-605a-4896-aacf-ea938b800ba0
-
-## Bypassing Canary Protection Demo  
-https://github.com/user-attachments/assets/a3d8037d-227a-4f01-a554-750df58e7b67
-
-## Bypassing PIE Protection Demo  
-https://github.com/user-attachments/assets/2a3b1e49-e372-43d7-b2f1-43b153ea7ec6
 
 
 ## Installation Dependencies  
 Ensure **Python 3.x** is installed (Kali Linux is recommended). Install the required dependencies:
 
 ```bash
-python3 setup.py install
+python3 setup.py
 ````
 
 If script installation fails, manually install the dependencies:
@@ -67,6 +60,7 @@ If script installation fails, manually install the dependencies:
 ```bash
 pip3 install pwntools  
 pip3 install LibcSearcher
+pip3 install ropper
 ```
 
 ---
