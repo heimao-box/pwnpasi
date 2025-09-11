@@ -1,134 +1,186 @@
-# pwnpasi v3.0
+<div align="center">
 
-**pwnpasi** is an automated tool specifically designed for introductory-level CTF PWN challenges, aimed at helping beginners quickly identify and exploit **stack overflow** and **format string vulnerabilities** in 32-bit and 64-bit programs.
+# 🚀 PwnPasi
+
+**Professional Automated Binary Exploitation Framework**
+
+[![Version](https://img.shields.io/badge/version-3.0-blue.svg)](https://github.com/heimao-box/pwnpasi)
+[![Python](https://img.shields.io/badge/python-3.6+-green.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/heimao-box/pwnpasi)
 
 
-https://github.com/user-attachments/assets/e174553b-1547-4a96-9a97-95e53b281708
-
-
-## Key Features:
-
-✅ Automated Vulnerability Analysis
-```
-Determines overflow offsets
-Detects format string vulnerabilities
-Identifies dynamically linked libraries (libc)
-```
-✅ One-Click Exploit Generation
-```
-Constructs ROP chains for:
-Calling backdoor functions (e.g., system)
-Automatically detect vulnerable functions and generate their associated assembly code
-Shellcode injection
-puts/write function ROP
-syscall-based ROP
-Format string exploitation
-```
-✅ Protection Bypass
-```
-Auto-detects and circumvents:
-PIE (Position-Independent Executable)
-Stack Canary
-```
-✅ Flexible Deployment
-```
-Supports local and remote exploitation
-Integrates LibcSearcher to auto-resolve libc versions (even without provided addresses)
-```
+</div>
 
 ---
 
-## Translation Notice
+## 🎯 What is PwnPasi?
 
-This is an English translation of the original [README](https://github.com/heimao-box/pwnpasi) written in Chinese.
+PwnPasi is a **cutting-edge automated binary exploitation framework** designed for CTF competitions and security research. With its **sqlmap-inspired interface** and **intelligent vulnerability detection**, PwnPasi transforms complex binary exploitation into an automated, streamlined process.
 
-Translated by [xkenchii](https://github.com/xkenchii). If you find any issues with the translation, feel free to open an issue or pull request.
+### ✨ Key Features
+
+🔍 **Smart Vulnerability Detection**
+- Automatic stack overflow detection with dynamic padding calculation
+- Format string vulnerability identification and exploitation
+- Binary protection analysis (RELRO, Stack Canary, NX, PIE)
+- Assembly code analysis for vulnerable function detection
+
+⚡ **Advanced Exploitation Techniques**
+- **ret2system**: Direct system function calls
+- **ret2libc**: ASLR bypass through libc address leaking
+- **ROP Chain Construction**: Automated gadget discovery and chaining
+- **Syscall Exploitation**: execve system call chains
+- **Shellcode Injection**: RWX segment exploitation
+- **Stack Canary Bypass**: Format string canary leaking
+- **PIE Bypass**: Position Independent Executable circumvention
+
+🏗️ **Multi-Architecture Support**
+- **x86 (32-bit)**: Complete 32-bit exploitation chains
+- **x86_64 (64-bit)**: Full 64-bit exploitation support
+- **Auto-detection**: Intelligent architecture recognition
+
+🌐 **Flexible Deployment**
+- **Local Mode**: Direct binary file exploitation
+- **Remote Mode**: Network service targeting
+- **Hybrid Approach**: Seamless local-to-remote transition
 
 ---
 
+## 🚀 Quick Start
 
-
-## Installation Dependencies  
-Ensure **Python 3.x** is installed (Kali Linux is recommended). Install the required dependencies:
+### Installation
 
 ```bash
-python3 setup.py
-````
-<img width="1276" height="994" alt="image" src="https://github.com/user-attachments/assets/5ed16a60-eaf9-4c2b-ba0b-c48beff0a8b3" />
+# Clone the repository
+git clone https://github.com/heimao-box/pwnpasi.git
+cd pwnpasi
 
+# Run the automated setup
+python setup.py
+```
 
-If script installation fails, manually install the dependencies:
+The setup script will automatically:
+- Install system dependencies (Kali/Debian)
+- Set up Python packages (pwntools, LibcSearcher, ropper)
+- Configure the environment
+- Add pwnpasi to system PATH (optional)
+
+### Basic Usage
 
 ```bash
-pip3 install pwntools  
-pip3 install LibcSearcher
-pip3 install ropper
+# Analyze local binary
+python pwnpasi.py -l ./target_binary
+
+# Remote exploitation
+python pwnpasi.py -l ./binary -ip 192.168.1.100 -p 9999
+
+# Custom libc and padding
+python pwnpasi.py -l ./binary -libc ./libc-2.19.so -f 112
 ```
 
 ---
 
-## Running the Tool
+## 💡 Usage Examples
 
-Execute the tool via the command line. Example commands:
-
-### Basic usage:
-
+### 🎪 Local Binary Analysis
 ```bash
-python pwnpasi.py -l level3_x64
+# Comprehensive local analysis
+python pwnpasi.py -l ./vuln_binary
 ```
 
-### Specify a dynamic library (libc):
-
+### 🌍 Remote Service Exploitation
 ```bash
-python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6
+# Target remote CTF service
+python pwnpasi.py -l ./local_binary -ip ctf.example.com -p 31337
 ```
 
-### Remote exploitation:
-
+### 🔧 Advanced Configuration
 ```bash
-python pwnpasi.py -l level3_x64 -libc /lib/i386-linux-gnu/libc.so.6 -ip 192.168.0.1 -p 33333
+# Specify custom libc and manual padding
+python pwnpasi.py -l ./binary -libc /lib/x86_64-linux-gnu/libc.so.6 -f 88 -v
 ```
 
 ---
 
-## Future Plans
+## 📋 Command Line Options
 
-* Improve **64-bit register-based function calls**
-* Add **multi-interaction program fuzzing** support
-* Expand exploitation methods for **stack overflow & format string vulnerabilities**, supporting more architectures
-* Enhance **automation and user-friendliness**
-
----
-
-## Possible Errors & Solutions
-
-* **Avoid special characters** (e.g., `_/*&^%$#@`) in program names—use **only letters or numbers**.
-* Errors may occur if dependencies are not fully installed. Verify all required tools and libraries are correctly installed.
+| Option | Description | Example |
+|--------|-------------|----------|
+| `-l, --local` | Target binary file (required) | `-l ./vuln_app` |
+| `-ip, --ip` | Remote target IP address | `-ip 192.168.1.100` |
+| `-p, --port` | Remote target port | `-p 9999` |
+| `-libc, --libc` | Custom libc file path | `-libc ./libc-2.27.so` |
+| `-f, --fill` | Manual overflow padding size | `-f 112` |
+| `-v, --verbose` | Enable verbose output | `-v` |
 
 ---
 
-## Final Notes
+## 🛠️ Technical Arsenal
 
-This tool is designed for **CTF PWN challenges**, currently targeting **beginners** while also supporting users with PWN experience. We will **continue updating** and introducing more advanced features.
+### Core Dependencies
+- **pwntools** - The ultimate CTF framework
+- **LibcSearcher** - Libc database and version detection
+- **ropper** - Advanced ROP gadget discovery
+- **checksec** - Binary security feature analysis
 
-This project also serves as **technical groundwork** for future developments.
-
-Join the PwnPasi Feedback & Discussion Group (Group ID: **256806296**) to share issues, suggestions, or contribute to development.
+### System Tools Integration
+- **objdump** - Assembly analysis and disassembly
+- **strings** - String extraction and analysis
+- **ldd** - Dynamic library dependency mapping
+- **gdb** - Advanced debugging capabilities
 
 ---
 
-## Acknowledgments
+## 🎨 Output Preview
 
-Special thanks to **Melody**, **mycafday**, **落雨流辰**, and all group members for their valuable feedback—each suggestion has helped shape this project.
+
+
+https://github.com/user-attachments/assets/1395d646-eeeb-4342-8b93-e05eed282b92
+
+
 
 ---
 
-## License
+## 🏆 Why Choose PwnPasi?
 
-This project is licensed under the [MIT License](LICENSE).
-Original project by [heimao-box](https://github.com/heimao-box). Translation provided in compliance with the license.
+### 🎯 **Precision & Automation**
+No more manual gadget hunting or address calculation. PwnPasi automates the entire exploitation pipeline with surgical precision.
 
-## Star History
+### 🚀 **Speed & Efficiency**
+From vulnerability detection to shell acquisition in seconds, not hours. Perfect for time-critical CTF scenarios.
 
-[![Star History Chart](https://api.star-history.com/svg?repos=heimao-box/pwnpasi&type=Date)](https://www.star-history.com/#heimao-box/pwnpasi&Date)
+### 🧠 **Intelligence & Adaptability**
+Smart fallback mechanisms ensure maximum success rate across different binary configurations and protection schemes.
 
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Whether it's:
+- 🐛 Bug reports and fixes
+- ✨ New exploitation techniques
+- 📚 Documentation improvements
+- 🔧 Performance optimizations
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⚠️ Disclaimer
+
+PwnPasi is designed for **educational purposes** and **authorized security testing** only. Users are responsible for ensuring compliance with applicable laws and regulations. The developers assume no liability for misuse of this tool.
+
+---
+
+<div align="center">
+
+**Made with ❤️ by the Security Research Community**
+
+*Star ⭐ this repo if PwnPasi helped you pwn some binaries!*
+
+</div>
