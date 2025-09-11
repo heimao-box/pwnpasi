@@ -5,7 +5,6 @@ import time
 import subprocess
 from setuptools import setup, find_packages
 
-# 科技化颜色方案
 class Colors:
     CYAN = '\033[96m'
     GREEN = '\033[92m'
@@ -166,4 +165,5 @@ else:
                 'pwnpasi=pwnpasi:main',
             ],
         },
+
     )
