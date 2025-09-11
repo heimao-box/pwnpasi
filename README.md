@@ -16,7 +16,7 @@
 
 ## 🎯 What is PwnPasi?
 
-PwnPasi is a **cutting-edge automated binary exploitation framework** designed for CTF competitions and security research. With its **sqlmap-inspired interface** and **intelligent vulnerability detection**, PwnPasi transforms complex binary exploitation into an automated, streamlined process.
+PwnPasi is a **cutting-edge automated binary exploitation framework** designed for CTF competitions and security research, PwnPasi transforms complex binary exploitation into an automated, streamlined process.
 
 ### ✨ Key Features
 
