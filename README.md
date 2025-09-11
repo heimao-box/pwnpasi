@@ -179,7 +179,7 @@ PwnPasi is designed for **educational purposes** and **authorized security testi
 
 <div align="center">
 
-**Made with ❤️ by the Security Research Community**
+**Made with ❤️ by Ba1_Ma0**
 
 *Star ⭐ this repo if PwnPasi helped you pwn some binaries!*
 
