@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 PwnPasi
+# 🚀 PwnPasi 3.1
 
 **Professional Automated Binary Exploitation Framework**
 
@@ -25,6 +25,7 @@ PwnPasi is a **cutting-edge automated binary exploitation framework** designed f
 - Format string vulnerability identification and exploitation
 - Binary protection analysis (RELRO, Stack Canary, NX, PIE)
 - Assembly code analysis for vulnerable function detection
+- Automatically generating reports
 
 ⚡ **Advanced Exploitation Techniques**
 - **ret2system**: Direct system function calls
