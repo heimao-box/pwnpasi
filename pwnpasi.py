@@ -565,59 +565,42 @@ def Information_Collection(program):
 
 def collect_binary_info(program):
     """Collect comprehensive binary information"""
-    print_info("collecting binary information")
+    print_info("collecting ELF binary information")
     
     try:
-        os.system(f"checksec {program} > Information_Collection.txt 2>&1")
+        elf = ELF(program, checksec=False)
+        os.system(f"checksec --file={program} > Information_Collection.txt 2>&1")
         
-        with open("Information_Collection.txt", 'r') as f:
-            content = f.readlines()
+        result = {
+            "arch": f"{elf.arch}-{elf.bits}-{elf.endian}",
+            "bit": elf.bits
+        }
+       
         
-        result = {}
-        
-        # Parse architecture
-        arch_match = re.search(r"Arch:\s+(\S+)", "".join(content))
-        if arch_match:
-            arch = arch_match.group(1)
-            result['arch'] = arch
-            if '64' in arch:
-                result['bit'] = 64
-            elif '32' in arch:
-                result['bit'] = 32
-        
-        # Parse security features
-        security_features = ['RELRO', 'Stack', 'NX', 'PIE', 'Stripped', 'RWX']
-        for feature in security_features:
-            for line in content:
-                if feature in line:
-                    result[feature] = line.split(":")[1].strip()
-                    break
-        
+        result['RELRO'] = f"{elf.relro} RELRO" if elf.relro else "No RELRO"
+
         # Process stack canary
-        stack_protection = 0
-        if 'Stack' in result:
-            if result['Stack'] == 'No canary found':
-                stack_protection = 0
-            elif result['Stack'] == 'Canary found':
-                stack_protection = 1
+        stack_protection = int(elf.canary)
+        result['Stack'] = "Canary found" if stack_protection else "No canary found"
         
-        # Process RWX segments
-        rwx_segments = 0
-        if 'RWX' in result:
-            if result['RWX'] == 'Has RWX segments':
-                rwx_segments = 1
-        
+        result['NX'] = "NX enabled" if elf.nx else "NX disabled"
+
         # Process PIE
-        pie_enabled = 0
-        if 'PIE' in result:
-            if result['PIE'] == 'PIE enabled':
-                pie_enabled = 1
+        pie_enabled = int(elf.pie)
+        result['PIE'] = "PIE enabled" if elf.pie else "No PIE"
+
+        result['Stripped'] = "Yes" if elf.stripped else "No"
+
+        # Process RWX segments
+        rwx_segments = int(bool(elf.rwx_segments))
+        result['RWX'] = "Has RWX segments" if elf.rwx_segments else "No RWX segments"
         
         return result, stack_protection, rwx_segments, result.get('bit', 64), pie_enabled
         
     except Exception as e:
         print_error(f"failed to collect binary information: {e}")
         return {}, 0, 0, 64, 0
+
 
 def display_binary_info(info_dict):
     """Display binary information in a professional table format"""
